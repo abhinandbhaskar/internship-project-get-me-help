@@ -1,0 +1,36 @@
+{% extends 'admin/admin_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+    <h2 class="Hh"> Approved Workers</h2>
+<form action="" method="get"><table width="70%" border="2" class="table table-bordered c">
+  <tr class="headings" >
+    <th width="8%" scope="row">Slno</th>
+    <td width="20%">Workername</td>
+    <td width="11%">Email</td>
+    <td width="12%">Phone</td>
+    <td width="17%">Image</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <th scope="row"><div align="center">{{ forloop.counter }}</div> </th>
+    <td>{{ i.worker_name }}</td>
+    <td>{{ i.email }}</td>
+    <td>{{ i.phone }}</td>
+    <td><img src="{{ i.image }}" height="120px" width="160px"></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'worker/worker_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+{#       <h1 class="Hh">Add services</h1>#}
+<form action="/worker_reg_post" method="post" enctype="multipart/form-data" onsubmit="return validateForm();" >
+    {% csrf_token %}
+<table width="70%" border="2" class="table table-bordered c">
+  <tr>
+    <th scope="row">name:</th>
+    <td><label for="textfield"></label>
+      <input type="text" name="name" id="textfield" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">email:</th>
+    <td><label for="textfield"></label>
+      <input type="email" name="email" id="textfield" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">phone:</th>
+    <td><label for="textfield"></label>
+      <input type="number" name="phone" id="textfield" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">image:</th>
+    <td><label for="textfield"></label>
+      <input type="file" name="image" id="image" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">password:</th>
+    <td><label for="textfield"></label>
+      <input type="password" name="password" id="password" required/></td>
+  </tr>
+  <tr>
+    <th scope="row">confim password:</th>
+    <td><label for="textfield"></label>
+      <input type="password" name="re_password" id="re_password" required/></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><input type="submit" name="button" class="submit-btn" id="button" value="Submit" /></th>
+    </tr>
+</table>
+</form>
+</div>
+<script type="text/javascript" src="\static\page_templates\js\main_regjs.js"></script>
+</body>
+</html>
+{% endblock %}

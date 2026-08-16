@@ -1,0 +1,39 @@
+{% extends 'admin/admin_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+<body>
+<div class="container-one">
+    <h2 class="Hh">Services</h2>
+<form action="" method="">
+ <div class="table-responsive">
+<table width="60%" border="2" class="table table-bordered c">
+  <tr class="headings">
+    <th width="60%" scope="row"> Services</th>
+    <td width="20%" >Actions</td>
+
+  </tr>
+    {% for i in data %}
+  <tr>
+      <th scope="row"><div align="center">{{ i.service_name }}</div></th>
+    <td><div align="center"><a href="/delete_services/{{ i.id }}" onclick="return confirm('Are you sure?')" class="btn btn-danger" >delete</a></div></td>
+    </tr>
+    {% endfor %}
+</table>
+ </div>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

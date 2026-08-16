@@ -1,0 +1,49 @@
+{% extends 'admin/admin_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+    <h2 class="Hh">Registered Workers</h2>
+<form action="" method="get">
+     <div class="table-responsive">
+    <table width="90%" border="2" class="table table-bordered c">
+  <tr class="headings" >
+    <th width="4%" scope="row">Slno</th>
+    <td width="15%">Workername</td>
+    <td width="11%">Email</td>
+    <td width="8%">Phone</td>
+    <td width="15%">Image</td>
+    <td width="10%">Action</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ i.worker_name }}&nbsp;</td>
+    <td>{{ i.email }}</td>
+    <td>{{ i.phone }}</td>
+    <td><img src="{{ i.image }}" height="120px" width="160px" ></td>
+      <td><a class="btn btn-success ml-1"   href="/approve_worker/{{ i.LOGIN.id }}">approve</a><br>
+      <a class="btn btn-danger m-2 mr-6" style="width: 80px;" onclick="return confirm('are you sure you want to reject')" href="/reject_worker/{{ i.LOGIN.id }}">reject</a></td>
+  </tr>
+    {% endfor %}
+</table>
+     </div>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

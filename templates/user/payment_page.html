@@ -1,0 +1,70 @@
+{#{% extends 'user/user_homepage.html' %}#}
+{#{% block body %}#}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="/static/page_templates/js/gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+       <h1 class="Hh">Payment</h1>
+<p>&nbsp;</p>
+<form id="form1" name="form1" method="post" action="/make_payment_post/{{ data3.id }}" >
+    {% csrf_token %}
+  <table  width="50%" border="2" class="table table-bordered c">
+    <tr>
+        <th width="20%" scope="row"><div align="center">Payment to:</div></th>
+      <td width="42%"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data3.OWNSERVICES.WORKER.worker_name }}" readonly/></td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center">Payment For:</div></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data3.OWNSERVICES.SERVICE.service_name }}" readonly/></td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center">Amount:</div></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ amnt }}" readonly/></td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center"> Bank Name :</div></th>
+{#      <td><label for="select"></label>#}
+{#        <select name="select" id="select">#}
+{#      </select></td>#}
+        <td>
+            <label for="textfield"></label>
+      <input type="text" name="bankname" id="textfield" value="{{ data.bank_name }}" readonly/>
+        </td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center">Account Holder Name:</div></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ name }}" readonly/></td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center">Account Number:</div></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" value="{{ data.accnt_no }}" readonly/></td>
+    </tr>
+    <tr>
+        <th scope="row"><div align="center">IFSC Code:</div></th>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" placeholder="bjll" id="textfield" value="{{ data.ifsc_code }}"  readonly/></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row">
+{#          <input type="submit" name="button" id="button" value="Make payment" />#}
+          <div align="center"><input type="submit" name="button" class="submit-btn" id="button" value="Submit" /></div>
+      </th>
+    </tr>
+  </table>
+</form>
+<p>&nbsp;</p>
+</div>
+</body>
+</html>
+{#{% endblock %}#}

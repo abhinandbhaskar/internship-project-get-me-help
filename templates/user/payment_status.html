@@ -1,0 +1,53 @@
+{% extends 'user/user_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+<h2 class="Hh">Payment Status</h2>
+<form id="form1" name="form1" method="post" action="">
+<div class="table-responsive">
+  <table  width="70%" border="2" class="table table-bordered c">
+    <tr class="headings">
+      <th width="12%" scope="row">Slno</th>
+      <td width="17%">Payment To</td>
+      <td width="18%">Payment For</td>
+      <td width="13%">Amount</td>
+      <td width="9%">Bank</td>
+      <td width="9%">Client</td>
+      <td width="13%">Payment Status</td>
+      <td width="9%">Date</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+        <th scope="row"><div align="center">{{ forloop.counter }}</div></th>
+        <td><div align="center">{{ i.OWNSERVICES.WORKER.worker_name }}</div></td>
+        <td><div align="center">{{ i.OWNSERVICES.SERVICE.service_name }}</div></td>
+        <td><div align="center">{{ i.OWNSERVICES.amount }}</div></td>
+        <td><div align="center">{{ i.bankname }}</div></td>
+        <td><div align="center">{{ i.USER.name }}</div></td>
+        <td><div align="center">{{ i.paymnt_sts }}</div></td>
+        <td><div align="center">{{ i.date }}</div></td>
+    </tr>
+      {% endfor %}
+  </table>
+</div>
+</form>
+</div>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

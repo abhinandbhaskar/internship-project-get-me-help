@@ -1,0 +1,54 @@
+{% extends 'worker/worker_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+       <h2 class="Hh" style="padding-left: 30px"> Profile </h2>
+<form action="/edit_wrkr_profile/{{ data.id }}#next" method="get">
+     <div class="table-responsive">
+<table width="50%" border="2" class="table table-bordered c">
+      <tr>
+      <th scope="row" width="35%"><div align="center">Image:</div></th>
+    <td><label for="textfield"></label>
+       <img src="{{ data.image }}" height="160px" width="200px" alt="fgf"></td>
+  </tr>
+  <tr>
+    <th scope="row"><div align="center"> Name:</div></th>
+    <td>
+      <input type="text" name="textfield" style="width: 70%" id="textfield" class="form-control" value="{{ data.worker_name }}" readonly/></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">Email:</div></th>
+    <td>
+      <input type="text" name="textfield" style="width: 70%" class="form-control" id="textfield" value="{{ data.email }}" readonly /></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">Phone:</div></th>
+    <td>
+      <input type="text" name="textfield" style="width: 70%" class="form-control" id="textfield" value="{{ data.phone }}" readonly/></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" class="submit-btn" id="button" value="Edit" /></div></th>
+    </tr>
+</table>
+     </div>
+</form>
+</div>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

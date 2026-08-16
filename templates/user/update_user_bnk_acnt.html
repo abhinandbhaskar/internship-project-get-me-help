@@ -1,0 +1,50 @@
+{% extends 'user/user_homepage.html' %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+    <link rel="stylesheet" href="\static\page_templates\js\gmhpages.css">
+</head>
+
+<body>
+<div class="container-one">
+       <h1 class="Hh">Edit Your Bank Account Details</h1>
+<form action="/user_upt_bank_dts_post/{{ data.id }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table width="70%" border="2" class="table table-bordered c">
+  <tr>
+      <th width="52%" scope="row"><div align="center"> Bank name:</div></th>
+    <td width="48%">
+      <input type="text" name="bankname" class="form-control" style="color: black; border-color: darkslategray" value="{{ data.bank_name }}" id="textfield" minlength="3" required  /></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">Account Number:</div></th>
+    <td>
+      <input type="text" name="acctno" class="form-control" value="{{ data.accnt_no }}" id="textfield2" pattern="\d{10,18}" title="Account number should be 10 to 18 digits" required /></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">IFSC Code:</div></th>
+    <td>
+      <input type="text" name="ifsccode" value="{{ data.ifsc_code }}" class="form-control" id="textfield3" pattern="[A-Z]{4}0[A-Z0-9]{6}" title="IFSC code should be in the format ABCD0EFGHIJ" required /></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">Branch Name:</div></th>
+    <td>
+      <input type="text" name="branchname" class="form-control" value="{{ data.branch_name }}" id="textfield4"  minlength="3" required /></td>
+  </tr>
+  <tr>
+      <th scope="row"><div align="center">Balance</div></th>
+    <td>
+      <input type="text" name="balance" value="{{ data.balance }}" class="form-control" id="textfield5" pattern="\d+(\.\d{1,2})?" title="Balance should be a number with up to two decimal places" required /></td>
+  </tr>
+  <tr>
+      <th colspan="2" scope="row"><div align="center"><input type="submit" name="button" class="submit-btn" id="button" value="Submit" /></div></th>
+    </tr>
+</table>
+</form>
+</div>
+</body>
+</html>
+{% endblock %}

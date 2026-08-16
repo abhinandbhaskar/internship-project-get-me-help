@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static\page_templates\js\main_reg.css">
+
+</head>
+<body>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="/worker_reg_post" method="post" enctype="multipart/form-data" onsubmit="return validateForm1();" >
+            {% csrf_token %}
+			<h1>Worker registration</h1>
+              <input type="text" name="name" id="textfield" pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed"  placeholder="Enter your name" required/>
+              <input type="email" name="email" id="textfield" pattern="^[a-zA-Z0-9](\.?[a-zA-Z0-9]){5,29}@gmail\.com$" title="username need minimum 6  charachers"  placeholder="Enter your email" required/>
+              <input type="text" name="phone" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" id="textfield" placeholder="Enter your phone" required/>
+              <input type="file" name="image" id="image" accept="image/*" required/>
+              <input type="password" name="password" id="password" placeholder="Enter the password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+              <input type="password" name="re_password" id="re_password" placeholder="re enter the password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+			<button type="submit" name="button" id="button" value="Submit">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="/user_reg_post" method="post" enctype="multipart/form-data" onsubmit="return validateForm2();">
+            {% csrf_token %}
+			<h1>User registration</h1>
+
+			<input type="text" name="name" id="textfield" pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed"  placeholder="Enter your name" required/>
+            <input type="text" name="place" id="textfield" pattern="[A-Za-z\s]+" title="Only alphabets and spaces are allowed"  placeholder="enter your place" required/>
+			<input type="text" name="pin" id="textfield" min="6" max="6" pattern="[0-9]{6}" title="Enter the 6 digit pincode" placeholder="enter your pin" required/>
+            <input type="text" name="post" id="textfield" placeholder="enter your post"  required/>
+            <input type="email" name="email" id="textfield" pattern="^[a-zA-Z0-9](\.?[a-zA-Z0-9]){5,29}@gmail\.com$" title="username need minimum 6  charachers"  placeholder="enter your email" required/>
+            <input type="text" name="phone" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" id="textfield" placeholder="enter your phone" required/>
+			<input type="file" name="image" accept="image/*" id="image"/>
+            <input type="password" name="password" id="password11" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="enter the password" required/>
+            <input type="password" name="re_password" id="re_password11" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="re enter the password " required/>
+			<button type="submit" name="button" id="button" value="Submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>Sign up today to become a user on our website and take advantage of all our amazing services.</p>
+				<button class="ghost" id="signIn">User</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Sign up now to become a worker on our website and start your journey with us </p>
+				<button class="ghost" id="signUp">Worker</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created with <i class="fa fa-heart"></i> by
+		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+		- Read how I created this and how you can join the challenge
+		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+	</p>
+</footer>
+<script>
+          function validateForm1(){
+            var password=document.getElementById("password").value;
+            var re_password=document.getElementById("re_password").value;
+
+            if(password !== re_password )
+            {
+             alert("Passwords do not match. Please re-enter your password.");
+             return false;
+            }
+            return true;
+        }
+
+           function validateForm2(){
+            var password=document.getElementById("password11").value;
+            var re_password=document.getElementById("re_password11").value;
+
+            if(password !== re_password)
+            {
+             alert("Passwords do not match. Please re-enter your password.");
+             return false;
+            }
+            return true;
+        }
+
+
+                  document.getElementById('image').addEventListener('change', function() {
+        const file = this.files[0];
+        const fileType = file.type;
+
+        // Check if the selected file type is an image
+        if (!fileType.startsWith('image/')) {
+            alert('Please select an image file.');
+            this.value = ''; // Clear the file input
+        }
+    });
+
+
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+
+
+</script>
+<script src="/static/page_templates/js/main_regjs.js"></script>
+</body>
+</html>
